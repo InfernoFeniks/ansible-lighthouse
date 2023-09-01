@@ -1,6 +1,7 @@
 galaxy_info:
   role_name: lighthouse
   author: Maxim Kuzin
+  namespace: infernofeniks
   company: InfernoFeniks
   description: Role for installation and managing Lighthouse
 
@@ -9,22 +10,21 @@ galaxy_info:
   min_ansible_version: "2.11"
 
   platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - bionic
     - name: Debian
       versions:
         - bullseye
         - buster
-        - stretch
-        - jessie
-
-  galaxy_tags:
-    - clickhouse
-    - database
-    - gui
-    - web
-    - monitoring
+    - name: EL
+      versions:
+        - "7"
+        - "8"
 
 dependencies:
   - src: git@github.com:InfernoFeniks/ansible-nginx.git
     scm: git
-    version: "0.1.1"
-    name: nginx
+    version: "0.2.2"
+    name: ansible-nginx

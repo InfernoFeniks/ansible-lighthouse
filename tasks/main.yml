@@ -1,10 +1,8 @@
 ---
 # tasks file for roles/lighthause
-- name: Install git
-  become: true
-  ansible.builtin.apt:
-    name: git
-    state: present
+
+- name: SYSTEM | Install git
+  include_tasks: install_git.yml
 
 - name: LIGHTHOUSE | Get from git
   ansible.builtin.git:

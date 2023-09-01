@@ -5,3 +5,4 @@
   ansible.builtin.service:
     name: nginx
     state: restarted
+  when: ansible_facts.virtualization_type != "docker"
