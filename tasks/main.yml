@@ -1,6 +1,10 @@
 ---
 # tasks file for roles/lighthause
 
+- name: SYSTEM | Update DNF repo for CentOS 8
+  ansible.builtin.include_tasks: dnf_prepare.yml
+  when: ansible_pkg_mgr == "dnf"
+
 - name: SYSTEM | Install git
   include_tasks: install_git.yml
 
@@ -23,4 +27,6 @@
     src: lighthouse.j2
     dest: /etc/nginx/conf.d/default.conf
     mode: "0644"
-  notify: NGINX | Restarted service
+
+- name: LIGHTHOUSE - NGINX | Restarted service
+  ansible.builtin.include_tasks: service.yml
